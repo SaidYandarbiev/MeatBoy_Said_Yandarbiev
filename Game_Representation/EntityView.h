@@ -1,0 +1,14 @@
+//
+// Created by said2 on 10-11-2022.
+//
+
+#ifndef MEATBOY_SAID_YANDARBIEV_ENTITYVIEW_H
+#define MEATBOY_SAID_YANDARBIEV_ENTITYVIEW_H
+
+
+class EntityView {
+
+};
+
+
+#endif //MEATBOY_SAID_YANDARBIEV_ENTITYVIEW_H

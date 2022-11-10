@@ -1,0 +1,14 @@
+//
+// Created by said2 on 10-11-2022.
+//
+
+#ifndef MEATBOY_SAID_YANDARBIEV_ABSTRACTFACTORY_H
+#define MEATBOY_SAID_YANDARBIEV_ABSTRACTFACTORY_H
+
+
+class AbstractFactory {
+
+};
+
+
+#endif //MEATBOY_SAID_YANDARBIEV_ABSTRACTFACTORY_H

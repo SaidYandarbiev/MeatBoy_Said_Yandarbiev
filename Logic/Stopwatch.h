@@ -1,0 +1,14 @@
+//
+// Created by said2 on 10-11-2022.
+//
+
+#ifndef MEATBOY_SAID_YANDARBIEV_STOPWATCH_H
+#define MEATBOY_SAID_YANDARBIEV_STOPWATCH_H
+
+
+class Stopwatch {
+
+};
+
+
+#endif //MEATBOY_SAID_YANDARBIEV_STOPWATCH_H

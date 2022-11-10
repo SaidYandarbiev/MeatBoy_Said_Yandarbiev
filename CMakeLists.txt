@@ -25,50 +25,49 @@ endif()
 link_directories(SFML_LIBRARY_DIR )
 include_directories(SFML_INCLUDE_DIR)
 
-FILE(GLOB Game_Representation
-        main.cpp
-        Game_Representation/EntityView.cpp
-        Game_Representation/EntityView.h
-        Game_Representation/PlayerView.cpp
-        Game_Representation/PlayerView.h
-        Game_Representation/WallView.cpp
-        Game_Representation/WallView.h
-        Game_Representation/GoalView.cpp
-        Game_Representation/GoalView.h
-        Game_Representation/StateManager.cpp
-        Game_Representation/StateManager.h
-        Game_Representation/State.cpp
-        Game_Representation/State.h
-        Game_Representation/MenuState.cpp
-        Game_Representation/MenuState.h
-        Game_Representation/LevelState.cpp
-        Game_Representation/LevelState.h
-        Game_Representation/ConcreteFactory.cpp
-        Game_Representation/ConcreteFactory.h
-        Game_Representation/Game.cpp
-        Game_Representation/Game.h)
+FILE(GLOB Src/Game_Representation
+        Src/Game_Representation/EntityView.cpp
+        Src/Game_Representation/EntityView.h
+        Src/Game_Representation/PlayerView.cpp
+        Src/Game_Representation/PlayerView.h
+        Src/Game_Representation/WallView.cpp
+        Src/Game_Representation/WallView.h
+        Src/Game_Representation/GoalView.cpp
+        Src/Game_Representation/GoalView.h
+        Src/Game_Representation/StateManager.cpp
+        Src/Game_Representation/StateManager.h
+        Src/Game_Representation/State.cpp
+        Src/Game_Representation/State.h
+        Src/Game_Representation/MenuState.cpp
+        Src/Game_Representation/MenuState.h
+        Src/Game_Representation/LevelState.cpp
+        Src/Game_Representation/LevelState.h
+        Src/Game_Representation/ConcreteFactory.cpp
+        Src/Game_Representation/ConcreteFactory.h
+        Src/Game_Representation/Game.cpp
+        Src/Game_Representation/Game.h)
 
 FILE(GLOB Logic
-        Logic/Observer.cpp
-        Logic/Observer.h
-        Logic/Score.cpp
-        Logic/Score.h
-        Logic/Subject.cpp
-        Logic/Subject.h
-        Logic/EntityModel.cpp
-        Logic/EntityModel.h
-        Logic/PlayerModel.cpp
-        Logic/PlayerModel.h
-        Logic/WallModel.cpp
-        Logic/WallModel.h
-        Logic/GoalModel.cpp
-        Logic/GoalModel.h
-        Logic/Stopwatch.cpp
-        Logic/Stopwatch.h
-        Logic/World.cpp
-        Logic/World.h
-        Logic/AbstractFactory.cpp
-        Logic/AbstractFactory.h)
+        Src/Logic/Observer.cpp
+        Src/Logic/Observer.h
+        Src/Logic/Score.cpp
+        Src/Logic/Score.h
+        Src/Logic/Subject.cpp
+        Src/Logic/Subject.h
+        Src/Logic/EntityModel.cpp
+        Src/Logic/EntityModel.h
+        Src/Logic/PlayerModel.cpp
+        Src/Logic/PlayerModel.h
+        Src/Logic/WallModel.cpp
+        Src/Logic/WallModel.h
+        Src/Logic/GoalModel.cpp
+        Src/Logic/GoalModel.h
+        Src/Logic/Stopwatch.cpp
+        Src/Logic/Stopwatch.h
+        Src/Logic/World.cpp
+        Src/Logic/World.h
+        Src/Logic/AbstractFactory.cpp
+        Src/Logic/AbstractFactory.h)
 
 find_package(SFML 2.5.1 COMPONENTS system window graphics network audio REQUIRED)
 
@@ -79,7 +78,7 @@ if(SFML_FOUND)
 endif()
 
 add_executable(MeatBoy_Said_Yandarbiev
-        ${Game_Representation} main.cpp Utility/Camera.cpp Utility/Camera.h)
+        ${Game_Representation} main.cpp Src/Utility/Camera.cpp Src/Utility/Camera.h Src/Utility/Window.cpp Src/Utility/Window.h)
 add_library(Logic_lib STATIC ${Logic})
 
 target_link_libraries(MeatBoy_Said_Yandarbiev

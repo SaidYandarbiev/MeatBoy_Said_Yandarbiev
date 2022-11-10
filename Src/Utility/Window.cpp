@@ -2,6 +2,4 @@
 // Created by said2 on 10-11-2022.
 //
 
-int main(){
-    return 0;
-}
+#include "Window.h"

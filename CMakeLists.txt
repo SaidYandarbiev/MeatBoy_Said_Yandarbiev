@@ -25,7 +25,7 @@ endif()
 link_directories(SFML_LIBRARY_DIR )
 include_directories(SFML_INCLUDE_DIR)
 
-FILE(GLOB Src/Game_Representation
+FILE(GLOB Game_Representation
         Src/Game_Representation/EntityView.cpp
         Src/Game_Representation/EntityView.h
         Src/Game_Representation/PlayerView.cpp
@@ -78,8 +78,8 @@ if(SFML_FOUND)
 endif()
 
 add_executable(MeatBoy_Said_Yandarbiev
-        ${Game_Representation} main.cpp Src/Utility/Camera.cpp Src/Utility/Camera.h Src/Utility/Window.cpp Src/Utility/Window.h)
-add_library(Logic_lib STATIC ${Logic})
+        ${Game_Representation} main.cpp Src/Utility/Camera.cpp Src/Utility/Camera.h Src/Utility/Window.cpp Src/Utility/Window.h Src/Utility/Vector.cpp Src/Utility/Vector.h Src/Game_Representation/MenuView.cpp Src/Game_Representation/MenuView.h Src/Utility/States.cpp Src/Utility/States.h Src/Utility/tinyxml2.cpp Src/Utility/tinyxml2.h Src/Utility/Direction.cpp Src/Utility/Direction.h)
+add_library(Logic_lib STATIC ${Logic} Src/Logic/MenuModel.cpp Src/Logic/MenuModel.h)
 
 target_link_libraries(MeatBoy_Said_Yandarbiev
         sfml-audio

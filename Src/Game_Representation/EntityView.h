@@ -6,7 +6,17 @@
 #define MEATBOY_SAID_YANDARBIEV_ENTITYVIEW_H
 
 
-class EntityView {
+#include <SFML/Graphics/Sprite.hpp>
+#include "../Logic/Observer.h"
+
+class EntityView : public Observer{
+public:
+    EntityView(){}
+
+    virtual void notify(Utility::Vector2f vector2F,Direction, bool wall) = 0;
+    virtual void notify(int lvlnumber) = 0;
+
+protected:
 
 };
 

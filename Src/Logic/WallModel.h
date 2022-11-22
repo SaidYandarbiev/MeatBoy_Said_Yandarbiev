@@ -5,8 +5,19 @@
 #ifndef MEATBOY_SAID_YANDARBIEV_WALLMODEL_H
 #define MEATBOY_SAID_YANDARBIEV_WALLMODEL_H
 
+#include "EntityModel.h"
 
-class WallModel {
+class WallView;
+class WallModel : public EntityModel{
+public:
+
+    WallModel(Utility::Vector2f f) {
+        pos = f;
+    }
+
+    void Update(Utility::Vector2f vector2F, std::shared_ptr<Utility::Camera> camera) override;
+    void Update(int lvlnumber)override{}
+    void Update(std::shared_ptr<Utility::States>, Utility::Vector2u, float y, std::shared_ptr<Utility::Camera> camera) override{};
 
 };
 

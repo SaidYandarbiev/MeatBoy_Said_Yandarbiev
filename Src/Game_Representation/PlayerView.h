@@ -6,7 +6,37 @@
 #define MEATBOY_SAID_YANDARBIEV_PLAYERVIEW_H
 
 
-class PlayerView {
+#include "EntityView.h"
+
+class PlayerView : public EntityView {
+public:
+
+    PlayerView(Utility::Vector2f vector2F){
+        pos_ = vector2F;
+        file_ = "Sprites/meatboyleft.png";
+    }
+
+    void notify(Utility::Vector2f vector2F, Direction direction, bool wall) override{
+        pos_ = vector2F;
+        if(direction == Direction::Right){
+            if(wall) {
+                file_ = "Sprites/meatboyleftwall.png";
+            }
+            else{
+                file_ = "Sprites/meatboyright.png";
+            }
+        }
+
+        else if(direction == Direction::Left){
+            if(wall) {
+                file_ = "Sprites/meatboyrightwall.png";
+            }
+            else{
+                file_ = "Sprites/meatboyleft.png";
+            }
+        }
+    }
+    void notify(int lvlnumber)override{}
 
 };
 

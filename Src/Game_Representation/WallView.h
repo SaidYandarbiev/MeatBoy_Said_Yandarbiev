@@ -6,8 +6,20 @@
 #define MEATBOY_SAID_YANDARBIEV_WALLVIEW_H
 
 
-class WallView {
+#include "EntityView.h"
 
+class WallView : public EntityView{
+public:
+    WallView(Utility::Vector2f vector2F){
+        pos_ = vector2F;
+        file_ = "Sprites/grass.png";
+    }
+
+    void notify(Utility::Vector2f vector2F,Direction, bool wall) override{
+        pos_ = vector2F;
+    }
+
+    void notify(int lvlnumber)override{}
 };
 
 

@@ -5,9 +5,14 @@
 #ifndef MEATBOY_SAID_YANDARBIEV_SCORE_H
 #define MEATBOY_SAID_YANDARBIEV_SCORE_H
 
+#include "Observer.h"
 
-class Score {
+class Score : public Observer {
+public:
+    Score(){}
 
+    void notify(Utility::Vector2f vector2F, Direction, bool wall) override{}
+    void notify(int lvlnumber)override{};
 };
 
 

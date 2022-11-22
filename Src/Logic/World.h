@@ -49,6 +49,10 @@ public:
         previouscameray = 0;
     }
 
+    bool getGameEnded() const{
+        return gameEnded;
+    }
+
 private:
 
     //The size of the window of the game and world
@@ -91,10 +95,13 @@ private:
     std::shared_ptr<Score> score = std::make_shared<Score>();
 
 
+
     bool ceilingcollision = true;
     bool walljump = true;
     bool nocollision = true;
 
+
+    bool gameEnded = false;
 };
 
 

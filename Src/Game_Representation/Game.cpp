@@ -22,6 +22,11 @@ void Game::Update()
 {
     if(m_world){
         m_world->Update();
+        if(m_world->getGameEnded()){
+            concreteFactory = nullptr;
+            m_world = nullptr;
+            stateManager_->Request1();
+        }
     }
     Utility::Stopwatch::getInstance()->FrameBalancing();
 }

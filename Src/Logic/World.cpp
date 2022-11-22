@@ -92,6 +92,10 @@ void World::Update() {
         }
     }
 
+    if(player->CheckCollision(goal->getx(), goal->gety(), player->getx(), player->gety(),0,1.5,1,1) || player->CheckCollision(goal->getx(), goal->gety(), player->getx(), player->gety(), 1.5, 0, 1,1) ){
+        gameEnded = true;
+    }
+
 
 
 //    if(walljump){

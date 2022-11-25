@@ -8,6 +8,7 @@
 #include "WallModel.h"
 #include "PlayerModel.h"
 #include "GoalModel.h"
+#include "Score.h"
 #include <memory>
 #include "../Utility/Vector.h"
 #include "vector"

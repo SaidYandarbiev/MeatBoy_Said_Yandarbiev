@@ -57,7 +57,7 @@ void PlayerModel::Update(std::shared_ptr<Utility::States> states, Utility::Vecto
 
     else if(states->ClickedUp && walljump){
         if(direction == Direction::Right){
-            xsnelheid = -0.3;
+            xsnelheid = -0.15;
             ysnelheid = -6;
             walljump = false;
             jumping = true;
@@ -65,7 +65,7 @@ void PlayerModel::Update(std::shared_ptr<Utility::States> states, Utility::Vecto
             direction = Direction::Left;
         }
         else if(direction == Direction::Left){
-            xsnelheid = 0.3;
+            xsnelheid = 0.15;
             ysnelheid = -6;
             walljump = false;
             jumping = true;

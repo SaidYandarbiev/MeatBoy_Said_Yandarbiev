@@ -19,10 +19,10 @@ void World::Update() {
     walljump = true;
     player->Update(states, m_windowSize, XWorldSize.GetY(),camera);
 
-    if((player->getFalling() || player->getJumping()) && walljump){
+    if((player->getFalling() || player->getJumping())){
         for (int i = 0; i < walls.size(); i++) {
             if (player->CheckCollision(walls[i]->getx(), walls[i]->gety(), player->getx(), player->gety(), 1.5, 0, 1,1) && player->getDirection() == Direction::Right
-            && !player->CheckCollision(walls[i]->getx(),walls[i]->gety(),player->getx(),player->gety(),1.3,1.3,1.3,1)) {
+            && !player->CheckCollision(walls[i]->getx(),walls[i]->gety(),player->getx(),player->gety(),1.2,1.2,1.2,1)) {
                 player->setWall("left", walljump);
             }
         }
@@ -97,34 +97,20 @@ void World::Update() {
     }
 
 
-
-//    if(walljump){
-//        for(int i = 0; i < walls.size(); i++){
-//            if(player->CheckCollision(walls[i]->getx(),walls[i]->gety(),player->getx(),player->gety(),0,1,-1,0.8)){
-//                nocollision = false;
-//                player->setWall("right",walljump);
-//            }
-//
-//            if(player->CheckCollision(walls[i]->getx(),walls[i]->gety(),player->getx(),player->gety(),1,0,0.3,0.8)){
-//                nocollision = false;
-//                player->setWall("left",walljump);
-//            }
-//        }
-//
-//    }
-
     if(nocollision){
         if(!player->getFalling() && !player->getJumping()) {
             player->setFalling(true);
             player->setWall("", false);
         }
     }
+
+    score->notify(lvlNumber);
 }
 
 void World::Spawner(int lvlnumber) {
-    lvlnumber = lvlnumber;
+    lvlNumber = lvlnumber;
     tinyxml2::XMLDocument doc;
-    std::string file = "Levels/Level" + std::to_string(lvlnumber) + ".xml" ;
+    std::string file = "Levels/Level" + std::to_string(lvlNumber) + ".xml" ;
     doc.LoadFile(file.c_str());
 
     for(int i = 1; i < 47; i++){

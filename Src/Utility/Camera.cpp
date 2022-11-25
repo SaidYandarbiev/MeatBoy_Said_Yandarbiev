@@ -13,9 +13,9 @@ void Utility::Camera::UpdatePlayer(Vector2f position1, bool jumping)
         gameended = true;
     }
 
-    if (position.y > CameraSizeY.y / 2 && jumping) {
-        OorsprongPunt.y = OorsprongPunt.y + (position.y - CameraSizeY.y / 2);
-    }
+//    if (position.y > CameraSizeY.y / 2 && jumping) {
+//        OorsprongPunt.y = OorsprongPunt.y + (position.y - CameraSizeY.y / 2);
+//    }
 }
 
 std::vector<float> Utility::Camera::UpdateBonus(double width, double height, double bonuswidth,

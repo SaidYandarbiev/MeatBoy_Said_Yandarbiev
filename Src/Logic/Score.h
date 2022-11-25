@@ -12,7 +12,18 @@ public:
     Score(){}
 
     void notify(Utility::Vector2f vector2F, Direction, bool wall) override{}
-    void notify(int lvlnumber)override{};
+    void notify(int lvlnumber)override{
+        if(curr_score > 0) {
+            curr_score -= 1;
+        }
+    };
+
+    int getScore(){
+        return curr_score;
+    }
+
+private:
+    int curr_score = 1000;
 };
 
 

@@ -94,12 +94,11 @@ private:
     //Pointer to the score class with the current score of the player
     std::shared_ptr<Score> score = std::make_shared<Score>();
 
-
-
     bool ceilingcollision = true;
     bool walljump = true;
     bool nocollision = true;
 
+    int lvlNumber = 0;
 
     bool gameEnded = false;
 };

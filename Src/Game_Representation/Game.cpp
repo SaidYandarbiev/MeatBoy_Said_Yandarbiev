@@ -8,12 +8,15 @@ Game::Game(string title, sf::Vector2u vector2U)
 {
     windowsize.x = vector2U.x;
     windowsize.y = vector2U.y;
-    Utility::Vector2f vector2F = Utility::Vector2f(vector2U.x, vector2U.y);
-//    concreteFactory = std::move(make_shared<ConcreteFactory>(ConcreteFactory(vector2F)));
-    Utility::Vector2u vector2U1(vector2U.x, vector2U.y);
-//    m_world =std::move(make_shared<World>(vector2U1, concreteFactory));
     m_window = new Utility::Window(title, vector2U);
     stateManager_ = make_shared<StateManager>(StateManager());
+
+    sf::Color color(0,0,0);
+    font.loadFromFile("Sprites/OpenSans-Bold.ttf");
+    score.setFont(font);
+    score.setFillColor(color);
+    score.setPosition(25,25);
+
 }
 
 
@@ -151,6 +154,11 @@ void Game::Render()
             sprite.setPosition(player->getPosition().x,concreteFactory->getPlayer()->getPosition().y);
             m_window->Draw(sprite);
         }
+        score.setFont(font);
+        int s = m_world->GetScore()->getScore();
+        score.setString(to_string(s));
+        m_window->Draw(score);
+
         m_window->EndDraw();
     }
     Utility::Stopwatch::getInstance()->Reset();

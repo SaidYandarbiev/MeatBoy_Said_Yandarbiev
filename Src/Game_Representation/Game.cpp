@@ -21,8 +21,6 @@ Game::Game(string title, sf::Vector2u vector2U)
 
 }
 
-
-
 void Game::Update()
 {
     if(m_world){
@@ -32,7 +30,7 @@ void Game::Update()
             concreteFactory = nullptr;
             m_world = nullptr;
             concreteFactory = std::move(make_shared<ConcreteFactory>(ConcreteFactory(Utility::Vector2f(windowsize.x,windowsize.y))));
-            m_world = m_world =std::move(make_shared<World>(windowsize, concreteFactory));
+            m_world = std::move(make_shared<World>(windowsize, concreteFactory));
             m_world->setLvlNumber(lvl);
             stateManager_->Next(m_world);
         }
@@ -41,6 +39,7 @@ void Game::Update()
             concreteFactory = nullptr;
             m_world = nullptr;
             stateManager_->Request1();
+            menuView = make_shared<MenuView>(MenuView(1));
         }
     }
     Utility::Stopwatch::getInstance()->FrameBalancing();
@@ -54,6 +53,7 @@ void Game::HandleInput(sf::Event event)
             concreteFactory = nullptr;
             m_world = nullptr;
             stateManager_->Request1();
+            menuView = make_shared<MenuView>(MenuView(1));
         }
     }
 
@@ -109,6 +109,7 @@ void Game::Render()
         sf::Texture texture;
         texture.loadFromFile(menuView->getFile());
         sprite.setTexture(texture);
+        m_window->BeginDraw();
         m_window->Draw(sprite);
         m_window->EndDraw();
     }

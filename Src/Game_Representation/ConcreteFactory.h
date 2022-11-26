@@ -26,15 +26,13 @@ public:
 
     std::shared_ptr<GoalModel> CreateGoalModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera) override;
 
-    std::shared_ptr<MenuModel> CreateMenuModel() override;
-
     std::shared_ptr<WallView> CreateWallView(Utility::Vector2f vector2I)override;
 
     std::shared_ptr<PlayerView> CreatePlayerView(Utility::Vector2f vector2I) override;
 
     std::shared_ptr<GoalView> CreateGoalView(Utility::Vector2f vector2I) override;
 
-    std::shared_ptr<MenuView> CreateMenuView() override;
+
 };
 
 

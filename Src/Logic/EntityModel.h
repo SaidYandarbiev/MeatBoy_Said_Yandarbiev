@@ -13,7 +13,7 @@
 class EntityModel : public Subject{
 public:
     EntityModel(){}
-    virtual void Update(Utility::Vector2f vector2F, std::shared_ptr<Utility::Camera> camera) = 0;
+    virtual void Update(std::shared_ptr<Utility::Camera> camera) = 0;
     virtual void Update(int lvlnumber) = 0;
     virtual void Update(std::shared_ptr<Utility::States>, Utility::Vector2u, float y, std::shared_ptr<Utility::Camera> camera) {};
 

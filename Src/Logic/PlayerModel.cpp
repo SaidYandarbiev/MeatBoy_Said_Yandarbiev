@@ -7,14 +7,6 @@
 #include "../Game_Representation/PlayerView.h"
 #include "Stopwatch.h"
 
-void PlayerModel::Update(Utility::Vector2f vector2F, std::shared_ptr<Utility::Camera> camera) {
-    pos = vector2F;
-    Utility::Vector2f pixels = camera->PositionInPixels(pos);
-    for(int i = 0; i < observers.size(); i++){
-        observers[i]->notify(pixels,direction, false);
-    }
-}
-
 void PlayerModel::Update(std::shared_ptr<Utility::States> states, Utility::Vector2u, float y , std::shared_ptr<Utility::Camera> camera) {
 
 

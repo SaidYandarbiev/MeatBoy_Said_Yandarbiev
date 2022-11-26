@@ -26,15 +26,11 @@ public:
 
     virtual std::shared_ptr<GoalModel> CreateGoalModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera);
 
-    virtual std::shared_ptr<MenuModel> CreateMenuModel();
-
     virtual std::shared_ptr<WallView> CreateWallView(Utility::Vector2f vector2I);
 
     virtual std::shared_ptr<PlayerView> CreatePlayerView(Utility::Vector2f vector2I);
 
     virtual std::shared_ptr<GoalView> CreateGoalView(Utility::Vector2f vector2I);
-
-    virtual std::shared_ptr<MenuView> CreateMenuView();
 
     void clear(){
         player.reset();

@@ -12,7 +12,7 @@ public:
     MenuModel(){}
 
     void Update(int lvlnumber)override;
-    void Update(Utility::Vector2f vector2F, std::shared_ptr<Utility::Camera> camera)override{}
+    void Update(std::shared_ptr<Utility::Camera> camera)override{}
 
 private:
     int lvlnumber_ = 1;

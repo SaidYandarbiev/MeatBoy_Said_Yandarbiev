@@ -16,13 +16,10 @@ namespace Utility{
     {
     public:
         //Constructor
-        explicit Camera(Vector2u windowsize);
+        explicit Camera(Vector2u windowsize, int lvlnumber);
 
         //Function that updates the position of the player
         void UpdatePlayer(Vector2f position1, bool jumping);
-
-        //Function that determines the factor that the position of the view of the model has to be multiplied with
-        std::vector<float> UpdateBonus(double width, double height, double bonuswidth, double bonusheight) const;
 
         //Returns the position in pixels of the given position
         Vector2f PositionInPixels(Vector2f position2) const;
@@ -63,6 +60,8 @@ namespace Utility{
 
         //If gameended boolean == true, then the game has ended
         bool gameended = false;
+
+        int lvlNumber = 1;
     };
 
 }

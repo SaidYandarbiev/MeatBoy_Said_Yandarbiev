@@ -24,8 +24,8 @@ public:
 
     virtual bool Handle1() = 0;
     virtual bool Handle2() = 0;
-    virtual void Handle3() = 0;
-    virtual void Handle4() = 0;
+    virtual int Handle3() = 0;
+    virtual int Handle4() = 0;
     virtual bool Handle5() = 0;
     virtual int getLvlNumber(){
         return 0;

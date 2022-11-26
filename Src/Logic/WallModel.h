@@ -15,7 +15,7 @@ public:
         pos = f;
     }
 
-    void Update(Utility::Vector2f vector2F, std::shared_ptr<Utility::Camera> camera) override;
+    void Update( std::shared_ptr<Utility::Camera> camera) override;
     void Update(int lvlnumber)override{}
     void Update(std::shared_ptr<Utility::States>, Utility::Vector2u, float y, std::shared_ptr<Utility::Camera> camera) override{};
 

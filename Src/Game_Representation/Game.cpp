@@ -17,6 +17,8 @@ Game::Game(string title, sf::Vector2u vector2U)
     score.setFillColor(color);
     score.setPosition(25,25);
 
+    menuView = make_shared<MenuView>(MenuView(1));
+
 }
 
 
@@ -25,7 +27,17 @@ void Game::Update()
 {
     if(m_world){
         m_world->Update();
-        if(m_world->getGameEnded()){
+        if(m_world->getGameEnded() && m_world->getLvlNumber() != 3){
+            int lvl = m_world->getLvlNumber() + 1;
+            concreteFactory = nullptr;
+            m_world = nullptr;
+            concreteFactory = std::move(make_shared<ConcreteFactory>(ConcreteFactory(Utility::Vector2f(windowsize.x,windowsize.y))));
+            m_world = m_world =std::move(make_shared<World>(windowsize, concreteFactory));
+            m_world->setLvlNumber(lvl);
+            stateManager_->Next(m_world);
+        }
+
+        else if(m_world->getGameEnded() && m_world->getLvlNumber() == 3){
             concreteFactory = nullptr;
             m_world = nullptr;
             stateManager_->Request1();
@@ -56,9 +68,9 @@ void Game::HandleInput(sf::Event event)
     if(stateManager_->Request5()) {
 
         if (event.key.code == sf::Keyboard::D) {
-            stateManager_->Request3();
+            menuView->notify(stateManager_->Request3());
         } else if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::A) {
-            stateManager_->Request4();
+            menuView->notify(stateManager_->Request4());
         }
     }
 
@@ -93,34 +105,11 @@ void Game::Render()
 
     if (stateManager_->Request5()){
         //Enter Menustate
-        tinyxml2::XMLDocument doc;
-        doc.LoadFile("Levels/Level1.xml");
-        sf::Sprite sprite;
+        sf::Sprite sprite = sf::Sprite();
         sf::Texture texture;
-        sf::Texture texture1;
-        texture.loadFromFile("Sprites/grass.png");
-        texture1.loadFromFile("Sprites/dirt.png");
-        m_window->BeginDraw();
-        for(int i = 1; i < 46; i++){
-            for(int j = 1; j < 31; j++){
-                string r = "row" + to_string(i);
-                string c = "col" + to_string(j);
-                string b = "block";
-                string a = doc.FirstChildElement("world")->FirstChildElement(r.c_str())->FirstChildElement(c.c_str())->GetText();
-                if(a == b){
-                    if(i%2 == 0 && j%2 ==0){
-                        sprite.setTexture(texture);
-                    }
-                    else{
-                        sprite.setTexture(texture1);
-                    }
-                }
-
-                sprite.setPosition(585 - 20*j,885 - 20*i);
-                m_window->Draw(sprite);
-            }
-        }
-
+        texture.loadFromFile(menuView->getFile());
+        sprite.setTexture(texture);
+        m_window->Draw(sprite);
         m_window->EndDraw();
     }
 
@@ -143,7 +132,9 @@ void Game::Render()
         texture.loadFromFile("Sprites/grass.png");
         sprite.setTexture(texture);
         for(int i = 0; i < walls.size(); i++){
-
+//            if(i == 0){
+//                std::cout << walls[i]->getPosition().x << "  "  << walls[i]->getPosition().y << std::endl;
+//            }
             sprite.setPosition(walls[i]->getPosition().x,walls[i]->getPosition().y);
             m_window->Draw(sprite);
         }

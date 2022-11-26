@@ -33,12 +33,6 @@ std::shared_ptr<GoalModel> ConcreteFactory::CreateGoalModel(Utility::Vector2f ve
     return goalModel;
 }
 
-std::shared_ptr<MenuModel> ConcreteFactory::CreateMenuModel() {
-    std::shared_ptr<MenuModel> menuModel = std::make_shared<MenuModel>(MenuModel());
-    std::shared_ptr<MenuView> menuView = CreateMenuView();
-    menuModel->Attach(menuView);
-    return menuModel;
-}
 
 std::shared_ptr<WallView> ConcreteFactory::CreateWallView(Utility::Vector2f vector2I) {
     std::shared_ptr<WallView> wallView = std::make_shared<WallView>(WallView(vector2I));
@@ -59,11 +53,7 @@ std::shared_ptr<GoalView> ConcreteFactory::CreateGoalView(Utility::Vector2f vect
     return goalView;
 }
 
-std::shared_ptr<MenuView> ConcreteFactory::CreateMenuView() {
-    std::shared_ptr<MenuView> menuView = std::make_shared<MenuView>(MenuView());
-    menuview = menuView;
-    return menuView;
-}
+
 
 
 

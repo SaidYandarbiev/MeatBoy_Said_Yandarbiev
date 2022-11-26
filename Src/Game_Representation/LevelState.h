@@ -26,10 +26,10 @@ public:
         std::cout << "Already in LevelState" << std::endl;
         return false;
     }
-    void Handle3() override{
+    int Handle3() override{
     }
 
-    void Handle4() override{
+    int Handle4() override{
     }
 
     bool Handle5()override{

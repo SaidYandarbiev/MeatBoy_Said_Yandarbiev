@@ -8,7 +8,6 @@
 World::World(Utility::Vector2u u, std::shared_ptr<AbstractFactory> sharedPtr) {
     concreteFactory = sharedPtr;
     m_windowSize = u;
-    camera = std::make_shared<Utility::Camera>(m_windowSize);
     states = std::make_unique<Utility::States>();
 }
 
@@ -103,40 +102,91 @@ void World::Update() {
             player->setWall("", false);
         }
     }
-
+    for(int i = 0; i < walls.size(); i++){
+        walls[i]->Update(camera);
+    }
+    goal->Update(camera);
     score->notify(lvlNumber);
 }
 
 void World::Spawner(int lvlnumber) {
-    lvlNumber = lvlnumber;
+    if(lvlNumber == 0) {
+        lvlNumber = lvlnumber;
+    }
+    camera = std::make_shared<Utility::Camera>(m_windowSize,lvlNumber);
     tinyxml2::XMLDocument doc;
     std::string file = "Levels/Level" + std::to_string(lvlNumber) + ".xml" ;
     doc.LoadFile(file.c_str());
 
-    for(int i = 1; i < 47; i++){
-        for(int j = 0; j < 31; j++){
-            std::string r = "row" + std::to_string(i);
-            std::string c = "col" + std::to_string(j+1);
-            std::string a = doc.FirstChildElement("world")->FirstChildElement(r.c_str())->FirstChildElement(c.c_str())->GetText();
-            if(a == "block"){
-                Utility::Vector2f vector2F = Utility::Vector2f(j,i);
-                walls.push_back(concreteFactory->CreateWallModel(vector2F,camera));
+    if(lvlnumber == 1) {
+        for (int i = 1; i < 47; i++) {
+            for (int j = 0; j < 31; j++) {
+                std::string r = "row" + std::to_string(i);
+                std::string c = "col" + std::to_string(j + 1);
+                std::string a = doc.FirstChildElement("world")->FirstChildElement(r.c_str())->FirstChildElement(
+                        c.c_str())->GetText();
+                if (a == "block") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    walls.push_back(concreteFactory->CreateWallModel(vector2F, camera));
+                } else if (a == "player") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    player = concreteFactory->CreatePlayerModel(vector2F, camera);
+                } else if (a == "nothing") {
+
+                } else if (a == "goal") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    goal = concreteFactory->CreateGoalModel(vector2F, camera);
+                }
+
             }
+        }
+    }
 
-            else if(a == "player"){
-                Utility::Vector2f vector2F = Utility::Vector2f(j,i);
-                player = concreteFactory->CreatePlayerModel(vector2F,camera);
+    else if (lvlnumber == 2){
+        for (int i = 1; i < 56; i++) {
+            for (int j = 0; j < 31; j++) {
+                std::string r = "row" + std::to_string(i);
+                std::string c = "col" + std::to_string(j + 1);
+                std::string a = doc.FirstChildElement("world")->FirstChildElement(r.c_str())->FirstChildElement(
+                        c.c_str())->GetText();
+                if (a == "block") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    walls.push_back(concreteFactory->CreateWallModel(vector2F, camera));
+                } else if (a == "player") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    player = concreteFactory->CreatePlayerModel(vector2F, camera);
+                } else if (a == "nothing") {
+
+                } else if (a == "goal") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    goal = concreteFactory->CreateGoalModel(vector2F, camera);
+                }
+
             }
+        }
+    }
 
-            else if(a == "nothing"){
+    else if(lvlnumber == 3){
+        for (int i = 1; i < 56; i++) {
+            for (int j = 0; j < 31; j++) {
+                std::string r = "row" + std::to_string(i);
+                std::string c = "col" + std::to_string(j + 1);
+                std::string a = doc.FirstChildElement("world")->FirstChildElement(r.c_str())->FirstChildElement(
+                        c.c_str())->GetText();
+                if (a == "block") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    walls.push_back(concreteFactory->CreateWallModel(vector2F, camera));
+                } else if (a == "player") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    player = concreteFactory->CreatePlayerModel(vector2F, camera);
+                } else if (a == "nothing") {
+
+                } else if (a == "goal") {
+                    Utility::Vector2f vector2F = Utility::Vector2f(j, i);
+                    goal = concreteFactory->CreateGoalModel(vector2F, camera);
+                }
 
             }
-
-            else if(a == "goal"){
-                Utility::Vector2f vector2F = Utility::Vector2f(j,i);
-                goal = concreteFactory->CreateGoalModel(vector2F,camera);
-            }
-
         }
     }
 

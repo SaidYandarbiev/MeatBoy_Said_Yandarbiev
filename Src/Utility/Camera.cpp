@@ -3,7 +3,10 @@
 //
 
 #include "Camera.h"
-Utility::Camera::Camera(Vector2u windowsize) { RenderWindow = windowsize; }
+Utility::Camera::Camera(Vector2u windowsize, int lvlnumber) {
+    RenderWindow = windowsize;
+    lvlNumber = lvlnumber;
+}
 
 void Utility::Camera::UpdatePlayer(Vector2f position1, bool jumping)
 {
@@ -13,25 +16,18 @@ void Utility::Camera::UpdatePlayer(Vector2f position1, bool jumping)
         gameended = true;
     }
 
-//    if (position.y > CameraSizeY.y / 2 && jumping) {
-//        OorsprongPunt.y = OorsprongPunt.y + (position.y - CameraSizeY.y / 2);
-//    }
-}
+    if (position.y > CameraSizeY.y / 2 && jumping && lvlNumber == 2) {
+        OorsprongPunt.y = OorsprongPunt.y + (position.y - CameraSizeY.y / 2);
+     }
 
-std::vector<float> Utility::Camera::UpdateBonus(double width, double height, double bonuswidth,
-                                                double bonusheight) const
-{
-    float playergamesizex = (RenderWindow.x / CameraSizeX.y) * width;
-    float playergamesizey = (RenderWindow.y /CameraSizeY.y) * height;
-
-    float factorx = playergamesizex /bonuswidth;
-    float factory = playergamesizey / bonusheight;
-
-    return {factorx,factory};
+    if(lvlNumber == 3){
+        OorsprongPunt.y += 0.02;
+    }
 }
 
 Utility::Vector2f Utility::Camera::PositionInPixels(Vector2f position2) const
 {
+
     position2.x = position2.x - OorsprongPunt.x;
     position2.y = position2.y - OorsprongPunt.y;
 

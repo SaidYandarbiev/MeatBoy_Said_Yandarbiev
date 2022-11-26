@@ -28,10 +28,4 @@ std::shared_ptr<GoalView> AbstractFactory::CreateGoalView(Utility::Vector2f vect
     return nullptr;
 }
 
-std::shared_ptr<MenuModel> AbstractFactory::CreateMenuModel() {
-    return nullptr;
-}
 
-std::shared_ptr<MenuView> AbstractFactory::CreateMenuView() {
-    return nullptr;
-}

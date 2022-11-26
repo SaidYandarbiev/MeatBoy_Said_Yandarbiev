@@ -53,6 +53,14 @@ public:
         return gameEnded;
     }
 
+    int getLvlNumber() const{
+        return lvlNumber;
+    }
+
+    void setLvlNumber(int lvl){
+        lvlNumber = lvl;
+    }
+
 private:
 
     //The size of the window of the game and world

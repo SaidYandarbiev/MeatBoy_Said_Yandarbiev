@@ -21,18 +21,19 @@ public:
         return true;
     }
 
-    void Handle3() override{
+    int Handle3() override{
         if(lvlnumber < 3){
             lvlnumber += 1;
         }
-        std::cout << lvlnumber << std::endl;
+        return lvlnumber;
     }
 
-    void Handle4() override{
+    int Handle4() override{
         if(lvlnumber > 1){
             lvlnumber -= 1;
         }
-        std::cout << lvlnumber << std::endl;
+        return lvlnumber;
+
     }
 
     bool Handle5() override{

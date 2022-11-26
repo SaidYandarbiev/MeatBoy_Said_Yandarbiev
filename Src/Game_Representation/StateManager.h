@@ -42,19 +42,25 @@ public:
         }
     }
 
-    void Request3(){
+    int Request3(){
         //D
-       state_->Handle3();
+        return state_->Handle3();
     }
 
-    void Request4(){
+    int Request4(){
         //A
-       state_->Handle4();
+        return state_->Handle4();
     }
 
     bool Request5(){
         //Statecheck
         return state_->Handle5();
+    }
+
+    void Next(std::shared_ptr<World> world){
+        state_ = nullptr;
+        state_ = std::move(std::make_shared<LevelState>(LevelState(world->getLvlNumber(),world)));
+        state_->set_statemanager(std::make_shared<StateManager>(*this));
     }
 };
 

@@ -11,11 +11,26 @@
 class PlayerView : public EntityView {
 public:
 
+     /**
+     * Constructor
+     * ///////////////////////////////////
+     * This constructor creates a PlayerView object with a given position
+     * Parameters:
+     *            vector2F: Position of the created PlayerView
+     */
     PlayerView(Utility::Vector2f vector2F){
         pos_ = vector2F;
         file_ = "Sprites/meatboyleft.png";
     }
 
+    /**
+     * Notify current object
+     * ////////////////////////////////////
+     * This function is called after the update of the Wallmodel, which the current WallView is connected to
+     * Parameters:
+     *             vector2F: Current position of the wall in pixels
+     *             wall: boolean, if true the player is sliding on a wall, false if not
+     */
     void notify(Utility::Vector2f vector2F, Direction direction, bool wall) override{
         pos_ = vector2F;
         if(direction == Direction::Right){

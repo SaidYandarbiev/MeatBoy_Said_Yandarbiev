@@ -81,6 +81,7 @@ namespace Utility {
         bool m_isDone;
         bool m_isFullscreen;
     };
+
 }
 
 

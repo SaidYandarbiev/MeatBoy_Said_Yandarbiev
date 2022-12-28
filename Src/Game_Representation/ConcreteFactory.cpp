@@ -4,7 +4,7 @@
 
 #include "ConcreteFactory.h"
 
-ConcreteFactory::ConcreteFactory(Utility::Vector2f f) {
+ConcreteFactory::ConcreteFactory() {
 
 }
 

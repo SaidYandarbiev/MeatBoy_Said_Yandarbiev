@@ -31,7 +31,7 @@ void Game::Update()
             int lvl = m_world->getLvlNumber() + 1;
             concreteFactory = nullptr;
             m_world = nullptr;
-            concreteFactory = std::move(make_shared<ConcreteFactory>(ConcreteFactory(Utility::Vector2f(windowsize.x,windowsize.y))));
+            concreteFactory = std::move(make_shared<ConcreteFactory>(ConcreteFactory()));
             m_world = std::move(make_shared<World>(windowsize, concreteFactory));
             m_world->setLvlNumber(lvl);
             stateManager_->Next(m_world);
@@ -63,7 +63,7 @@ void Game::HandleInput(sf::Event event)
     else if(event.key.code == sf::Keyboard::Enter){
         if(stateManager_->Request5()){
             menuView = nullptr;
-            concreteFactory = std::move(make_shared<ConcreteFactory>(ConcreteFactory(Utility::Vector2f(windowsize.x,windowsize.y))));
+            concreteFactory = std::move(make_shared<ConcreteFactory>());
             m_world = m_world =std::move(make_shared<World>(windowsize, concreteFactory));
             stateManager_->Request2(m_world);
         }
@@ -93,13 +93,23 @@ void Game::Render()
         sf::Sprite sprite = sf::Sprite();
         sf::Texture texture;
         sf::Text lvl;
+
         lvl.setFont(font);
         lvl.setString(to_string(menuView->currLvl()));
         lvl.setPosition(300,300);
 
+        sf::Text text;
+        text.setFont(font);
+        text.setString("Level select screen:");
+        text.setPosition(175,200);
+
         m_window->BeginDraw();
+        m_window->Draw(sprite);
         m_window->Draw(lvl);
+        m_window->Draw(text);
         m_window->EndDraw();
+
+
     }
 
     else{
@@ -145,3 +155,4 @@ void Game::Render()
     }
     Utility::Stopwatch::getInstance()->Reset();
 }
+Game::~Game() {}

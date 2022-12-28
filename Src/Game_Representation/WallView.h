@@ -10,11 +10,25 @@
 
 class WallView : public EntityView{
 public:
+
+    /**
+     * Constructor
+     * ///////////////////////////////////
+     * This constructor creates a WallView with a given position
+     * Parameters:
+     *            vector2F: Position of the created Wallview
+     */
     WallView(Utility::Vector2f vector2F){
         pos_ = vector2F;
         file_ = "Sprites/grass.png";
     }
-
+    /**
+     * Notify current object
+     * ////////////////////////////////////
+     * This function is called after the update of the Wallmodel, which the current WallView is connected to
+     * Relevant Parameters:
+     *             vector2F: Current position of the wall in pixels
+     */
     void notify(Utility::Vector2f vector2F,Direction, bool wall) override{
         pos_ = vector2F;
     }

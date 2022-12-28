@@ -11,14 +11,29 @@
 class GoalView : public EntityView{
 
 public:
+     /**
+     * Constructor
+     * ///////////////////////////////////
+     * This constructor creates a GoalView with a given position
+     * Parameters:
+     *            vector2F: Position of the created Goalview
+     */
     GoalView(Utility::Vector2f vector2F){
         pos_ = vector2F;
         file_ = "Sprites/bandagegirl.png";
     }
 
+    /**
+     * Notify current object
+     * ////////////////////////////////////
+     * This funmction is called after the update of the EntityModel, which the current EntityView is connected to
+     * Relevant Parameters:
+     *             vector2F: Current position of the wall in pixels
+     */
     void notify(Utility::Vector2f vector2F,Direction,bool wall) override{
         pos_ = vector2F;
     }
+
 
     void notify(int lvlnumber)override{}
 

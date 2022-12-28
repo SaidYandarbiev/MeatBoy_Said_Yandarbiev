@@ -20,17 +20,17 @@ class AbstractFactory {
 public:
     AbstractFactory() = default;
 
-    virtual std::shared_ptr<WallModel> CreateWallModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera);
+    virtual std::shared_ptr<WallModel> CreateWallModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera) = 0;
 
-    virtual std::shared_ptr<PlayerModel> CreatePlayerModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera);
+    virtual std::shared_ptr<PlayerModel> CreatePlayerModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera) = 0;
 
-    virtual std::shared_ptr<GoalModel> CreateGoalModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera);
+    virtual std::shared_ptr<GoalModel> CreateGoalModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera) = 0;
 
-    virtual std::shared_ptr<WallView> CreateWallView(Utility::Vector2f vector2I);
+    virtual std::shared_ptr<WallView> CreateWallView(Utility::Vector2f vector2I) = 0;
 
-    virtual std::shared_ptr<PlayerView> CreatePlayerView(Utility::Vector2f vector2I);
+    virtual std::shared_ptr<PlayerView> CreatePlayerView(Utility::Vector2f vector2I) = 0;
 
-    virtual std::shared_ptr<GoalView> CreateGoalView(Utility::Vector2f vector2I);
+    virtual std::shared_ptr<GoalView> CreateGoalView(Utility::Vector2f vector2I) = 0;
 
     void clear(){
         player.reset();

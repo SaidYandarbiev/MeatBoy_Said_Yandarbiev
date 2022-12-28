@@ -21,41 +21,81 @@
 class World {
 
 public:
+
+    /**
+    * Constructor
+    * //////////////////////////////////////
+    *The constructor creates a World object
+     * Parameters:
+     *           u: The size of the window
+     *           sharedPtr: concretefactory pointer
+     *           */
     World(Utility::Vector2u u, std::shared_ptr<AbstractFactory> sharedPtr);
 
-    //Updates every model and every view inside the world
+    /**
+    * Update
+    * //////////////////////////////////////
+    *Updates every model and every view inside the world
+     */
     void Update();
 
-    //Returns the pointer to the state class
+
+    /**
+    * Get state
+    * //////////////////////////////////////
+    * This function returns the last keyboard input of the player
+     */
     std::shared_ptr<Utility::States> GetState() { return states; }
 
-    //This function is called at the start of the game when the world is made
-    //It makes all the bg tiles of the first screen in the game
+    /**
+    * Spawner
+    * //////////////////////////////////////
+    * This function is called at the start of the game when the world is made.
+    * It makes all the bg tiles of the first screen in the game.
+     * Parameters:
+     *          lvlnumber: current level number
+    */
     void Spawner(int lvlnumber);
 
-    //Returns the player model
+    /**
+    * Get player
+    * //////////////////////////////////////
+    * This function returns the playermodel pointer
+     */
     std::shared_ptr<PlayerModel> GetPlayer() { return player; }
 
-    void Reset();
-
-    //Returns the score pointer
+    /**
+    * Get score
+    * //////////////////////////////////////
+    * This function returns the score pointer
+     */
     std::shared_ptr<Score> GetScore(){return score;}
 
-    void clear(){
-        player = nullptr;
-        goal = nullptr;
-        walls.clear();
-        previouscameray = 0;
-    }
-
+    /**
+    * Get game ended
+    * //////////////////////////////////////
+    * This function returns the boolean gameEnded, which tells us if the game has ended or not
+     */
     bool getGameEnded() const{
         return gameEnded;
     }
 
+    /**
+    * Get level number
+    * //////////////////////////////////////
+    * This function returns the current level number
+     */
     int getLvlNumber() const{
         return lvlNumber;
     }
 
+    /**
+    * Set level number
+    * //////////////////////////////////////
+    * This function sets the current level number
+     * Parameters:
+     *          lvl: current level number being set
+     */
     void setLvlNumber(int lvl){
         lvlNumber = lvl;
     }
@@ -101,12 +141,19 @@ private:
     //Pointer to the score class with the current score of the player
     std::shared_ptr<Score> score = std::make_shared<Score>();
 
+    //boolean if true then the player collided with ceiling, else false
     bool ceilingcollision = true;
+
+    //boolean if true then the player collided with wall while jumping/falling, else false
     bool walljump = true;
+
+    //boolean if true then the player has no collision with any object, else false
     bool nocollision = true;
 
+    //Current level number
     int lvlNumber = 0;
 
+    //boolean if true then the game has ended, else false
     bool gameEnded = false;
 };
 

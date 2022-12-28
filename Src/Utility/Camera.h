@@ -15,33 +15,40 @@ namespace Utility{
     class Camera
     {
     public:
-        //Constructor
+
+        /**
+        * Constructor
+        * //////////////////////////////////////
+        *The constructor creates a camera object
+        */
         explicit Camera(Vector2u windowsize, std::string fixed_or_not);
 
-        //Function that updates the position of the player
+        /**
+        * Update player
+        * //////////////////////////////////////
+        *Function that updates the position of the player
+        */
         void UpdatePlayer(Vector2f position1, bool jumping);
 
-        //Returns the position in pixels of the given position
+        /**
+        * Position in pixels
+        * //////////////////////////////////////
+        *Function that returns the position in pixels of the given position
+         */
         Vector2f PositionInPixels(Vector2f position2) const;
 
-        //Returns the x size of the camera
-        Vector2f GetCameraSizeX();
-
-        //Returns the y size of the camera
-        Vector2f GetCameraSizeY();
-
-        //Returns the renderwindow x size
-        float GetRenderWindowSizeX() const;
-
-        //Returns the renderwindow y size
-        float GetRenderWindowSizeY() const;
-
-        //Returns the position of the camera
+        /**
+        * Get position
+        * //////////////////////////////////////
+        *Function that returns the position of the camera
+        */
         float GetPosition() const;
 
-        //Returns the boolean gameended
-        bool getGameEnded()const;
-
+        /**
+        * Player died
+        * //////////////////////////////////////
+        *This function sets the position of the camera to the startposition
+        */
         void playerDied(){
             OorsprongPunt = OriginalPunt;
         }
@@ -67,6 +74,7 @@ namespace Utility{
         //If gameended boolean == true, then the game has ended
         bool gameended = false;
 
+        //String that tells us if the camera is fixed or not
         std::string f_o_n = "";
     };
 

@@ -90,9 +90,19 @@ void PlayerModel::Update(std::shared_ptr<Utility::States> states, Utility::Vecto
     }
 
     Utility::Vector2f pixels = camera->PositionInPixels(pos);
+    try {
+            if (jumping && falling) {
+                    throw std::exception();
+            }
 
-    for(int i = 0; i < observers.size(); i++){
-        observers[i]->notify(pixels,direction, walljump);
+            for (int i = 0; i < observers.size(); i++) {
+                    observers[i]->notify(pixels, direction, walljump);
+            }
+    }
+    catch (std::exception){
+            std::cout << "Can't jump and fall at the same time" << std::endl;
+            jumping = false;
+            falling = true;
     }
 
 }

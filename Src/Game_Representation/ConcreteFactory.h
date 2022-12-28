@@ -36,7 +36,7 @@ public:
      */
     std::shared_ptr<WallModel> CreateWallModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera)override;
 
-    //Function that creates the model of the player
+
     /**
      *
      * PlayerModel Creator
@@ -48,7 +48,7 @@ public:
      */
     std::shared_ptr<PlayerModel> CreatePlayerModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera) override;
 
-    //Function that creates the model of the goal
+
     /**
      *
      * GoalModel Creator
@@ -60,7 +60,7 @@ public:
      */
     std::shared_ptr<GoalModel> CreateGoalModel(Utility::Vector2f vector2I, std::shared_ptr<Utility::Camera> camera) override;
 
-    //Function that creates the view of a wall
+
     /**
      *
      * WallView Creator
@@ -71,7 +71,7 @@ public:
      */
     std::shared_ptr<WallView> CreateWallView(Utility::Vector2f vector2I)override;
 
-    //Function that creates the view of the player
+
     /**
      *
      * PlayerView Creator
@@ -82,7 +82,7 @@ public:
      */
     std::shared_ptr<PlayerView> CreatePlayerView(Utility::Vector2f vector2I) override;
 
-    //Function that creates the view of the goal
+
     /**
      *
      * GoalView Creator

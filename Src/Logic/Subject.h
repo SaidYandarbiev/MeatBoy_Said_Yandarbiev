@@ -16,12 +16,24 @@ class Observer;
 
 class Subject {
 public:
+
+    /**
+    * Constructor
+    * //////////////////////////////////////
+    *The constructor creates a Subject object
+    */
     Subject()= default;
 
+    /**
+    * Attach
+    * //////////////////////////////////////
+    * This function attaches a observer to the current subject object
+     */
     void Attach(std::shared_ptr<Observer> observer);
 
-//    virtual void Detach(std::shared_ptr<Observer>observer) = 0;
 protected:
+
+    //Vector of all the observers attached to the current subject
     std::vector<std::shared_ptr<Observer>> observers;
 };
 

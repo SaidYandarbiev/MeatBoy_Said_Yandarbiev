@@ -79,7 +79,7 @@ endif()
 
 add_executable(MeatBoy_Said_Yandarbiev
         ${Game_Representation} main.cpp Src/Utility/Camera.cpp Src/Utility/Camera.h Src/Utility/Window.cpp Src/Utility/Window.h Src/Utility/Vector.cpp Src/Utility/Vector.h Src/Game_Representation/MenuView.cpp Src/Game_Representation/MenuView.h Src/Utility/States.cpp Src/Utility/States.h Src/Utility/tinyxml2.cpp Src/Utility/tinyxml2.h Src/Utility/Direction.cpp Src/Utility/Direction.h)
-add_library(Logic_lib STATIC ${Logic} Src/Logic/MenuModel.cpp Src/Logic/MenuModel.h)
+add_library(Logic_lib STATIC ${Logic})
 
 target_link_libraries(MeatBoy_Said_Yandarbiev
         sfml-audio

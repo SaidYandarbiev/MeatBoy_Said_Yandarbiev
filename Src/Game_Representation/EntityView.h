@@ -22,7 +22,7 @@ public:
     /**
      * Notify current object
      * ////////////////////////////////////
-     * This funmction is called after the update of the EntityModel, which the current EntityView is connected to
+     * This function is called after the update of the EntityModel, which the current EntityView is connected to
      * Relevant Parameters:
      *             vector2F: Current position of the wall in pixels
      */
@@ -30,7 +30,7 @@ public:
     /**
      * Notify current object
      * ////////////////////////////////////
-     * This funmction is called after the update of the EntityModel, which the current EntityView is connected to
+     * This function is called after the update of the EntityModel, which the current EntityView is connected to
      * Relevant Parameters:
      *             lvlnumber: number of the current lvl
      */

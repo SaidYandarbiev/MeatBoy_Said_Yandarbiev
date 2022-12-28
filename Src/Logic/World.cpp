@@ -154,8 +154,5 @@ void World::Spawner(int lvlnumber) {
     }
 }
 
-void World::Reset() {
-
-}
 
 

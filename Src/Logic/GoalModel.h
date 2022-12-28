@@ -10,13 +10,44 @@ class GoalView;
 class GoalModel: public EntityModel{
 public:
 
-    GoalModel(Utility::Vector2f f) {
+    /**
+    * Constructor
+    * //////////////////////////////////////
+    *The constructor creates a GoalModel object
+     * Parameters:
+     *            f: startposition of the created object
+    */
+     GoalModel(Utility::Vector2f f) {
         pos = f;
         OriginalPos = f;
     }
 
+    /**
+     * Update
+     * ////////////////////////////////////
+     * This function is called every tick to Update the variables of the current object
+     * Parameter:
+     *          camera: The camera of the game
+     */
     void Update(std::shared_ptr<Utility::Camera> camera) override;
+
+    /**
+     * Update
+     * ////////////////////////////////////
+     * This function is called every tick to Update the variables of the current object
+     * Parameter:
+     *          lvlnumber: Current level number
+     */
     void Update(int lvlnumber)override{}
+
+    /**
+     * Update
+     * ////////////////////////////////////
+     * This function is called every tick to Update the variables of the current object
+     * Relevant Parameters:
+     *          states: Current state of the game
+     *          camera: The camera of the game
+     */
     void Update(std::shared_ptr<Utility::States>, Utility::Vector2u, float y, std::shared_ptr<Utility::Camera> camera) override{};
 
 };

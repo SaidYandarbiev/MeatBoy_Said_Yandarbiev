@@ -38,14 +38,5 @@ Utility::Vector2f Utility::Camera::PositionInPixels(Vector2f position2) const
 
     return position2;
 }
-Utility::Vector2f Utility::Camera::GetCameraSizeX() { return CameraSizeX; }
-
-Utility::Vector2f Utility::Camera::GetCameraSizeY() { return CameraSizeY; }
-
-float Utility::Camera::GetRenderWindowSizeX() const { return RenderWindow.x; }
-
-float Utility::Camera::GetRenderWindowSizeY() const { return RenderWindow.y; }
 
 float Utility::Camera::GetPosition() const { return OorsprongPunt.y; }
-
-bool Utility::Camera::getGameEnded() const { return gameended;}

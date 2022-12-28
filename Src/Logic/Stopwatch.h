@@ -14,27 +14,32 @@ namespace Utility{
     class Stopwatch
     {
     public:
-        //Constructor
+        /**
+        * Constructor
+        * //////////////////////////////////////
+        *The constructor creates a Stopwatch object
+        */
         static Stopwatch* getInstance();
 
-        static void Release()
-        {
-            delete instance;
-            instance = nullptr;
-        }
-
-        void TimeScale(float t = 1.0f) { timescale = t; }
-
-        float TimeScale() const { return timescale; }
-
-        //Resets the start time to the time now
+        /**
+        * Reset
+        * //////////////////////////////////////
+        * This function resets the start time to the time now
+         */
         void Reset() { start_time = std::chrono::steady_clock::now(); }
 
-        //This function is called every tick and it updates the deltatime to
-        //The time now - the start_time
+        /**
+        * Tick
+        * //////////////////////////////////////
+        * This function is called every tick and it updates the deltatime to
+        */
         void tick() { delta_time = std::chrono::steady_clock::now() - start_time; }
 
-        //This function returns the delta time
+        /**
+        * Get delta time
+        * //////////////////////////////////////
+        * This function returns the delta time
+         */
         float getDeltaTime() const { return delta_time.count(); }
 
 
@@ -50,19 +55,19 @@ namespace Utility{
         }
 
     private:
+
         Stopwatch() { Reset(); }
 
         ~Stopwatch() {}
 
+        //Stopwatch instance
         static Stopwatch* instance;
 
-        double PreviousUpdateTime;
-        double CurrentUpdateTime;
-
+        //Delta time
         std::chrono::duration<float, std::milli> delta_time = std::chrono::steady_clock::now()-std::chrono::steady_clock::now();
-        std::chrono::steady_clock::time_point start_time = std::chrono::steady_clock::now();
 
-        float timescale = 1.0f;
+        //Start time of the stopwatch
+        std::chrono::steady_clock::time_point start_time = std::chrono::steady_clock::now();
     };
 }
 

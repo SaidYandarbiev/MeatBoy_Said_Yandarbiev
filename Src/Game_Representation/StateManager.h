@@ -57,6 +57,10 @@ public:
         return state_->Handle5();
     }
 
+    int maxNumber(){
+        return state_->maxNumber();
+    }
+
     void Next(std::shared_ptr<World> world){
         state_ = nullptr;
         state_ = std::move(std::make_shared<LevelState>(LevelState(world->getLvlNumber(),world)));

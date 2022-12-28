@@ -8,9 +8,6 @@
 #include "Stopwatch.h"
 
 void PlayerModel::Update(std::shared_ptr<Utility::States> states, Utility::Vector2u, float y , std::shared_ptr<Utility::Camera> camera) {
-
-
-
     if(states->ClickedLeft){
         if((!walljump && !hitwall) || direction == Direction::Right) {
             forces.SetX(-2);
@@ -86,9 +83,16 @@ void PlayerModel::Update(std::shared_ptr<Utility::States> states, Utility::Vecto
 
     camera->UpdatePlayer(pos, jumping);
 
+    if(pos.y < camera->GetPosition()){
+        died = true;
+        camera->playerDied();
+        pos = OriginalPos;
+    }
+
     Utility::Vector2f pixels = camera->PositionInPixels(pos);
 
     for(int i = 0; i < observers.size(); i++){
         observers[i]->notify(pixels,direction, walljump);
     }
+
 }

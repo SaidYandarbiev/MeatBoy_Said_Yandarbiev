@@ -16,7 +16,7 @@ namespace Utility{
     {
     public:
         //Constructor
-        explicit Camera(Vector2u windowsize, int lvlnumber);
+        explicit Camera(Vector2u windowsize, std::string fixed_or_not);
 
         //Function that updates the position of the player
         void UpdatePlayer(Vector2f position1, bool jumping);
@@ -42,6 +42,10 @@ namespace Utility{
         //Returns the boolean gameended
         bool getGameEnded()const;
 
+        void playerDied(){
+            OorsprongPunt = OriginalPunt;
+        }
+
     private:
         //The size of the renderwindow
         Utility::Vector2u RenderWindow = Vector2u(600, 900);
@@ -58,10 +62,12 @@ namespace Utility{
         //Gives the source point
         Utility::Vector2f OorsprongPunt = Vector2f(0, 0);
 
+        Utility::Vector2f OriginalPunt = Vector2f(0,0);
+
         //If gameended boolean == true, then the game has ended
         bool gameended = false;
 
-        int lvlNumber = 1;
+        std::string f_o_n = "";
     };
 
 }

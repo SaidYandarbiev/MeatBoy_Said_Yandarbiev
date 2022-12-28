@@ -36,8 +36,14 @@ public:
     float gety() const{
         return pos.y;
     }
+
+    void playerDied(){
+        pos = OriginalPos;
+    }
+
 protected:
     Utility::Vector2f pos = Utility::Vector2f(0,0);
+    Utility::Vector2f OriginalPos = Utility::Vector2f(0,0);
 };
 
 

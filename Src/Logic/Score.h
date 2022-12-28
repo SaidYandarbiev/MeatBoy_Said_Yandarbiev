@@ -22,6 +22,10 @@ public:
         return curr_score;
     }
 
+    void resetScore(){
+        curr_score = 1000;
+    }
+
 private:
     int curr_score = 1000;
 };

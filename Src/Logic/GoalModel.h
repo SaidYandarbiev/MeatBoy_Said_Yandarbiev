@@ -12,11 +12,13 @@ public:
 
     GoalModel(Utility::Vector2f f) {
         pos = f;
+        OriginalPos = f;
     }
 
     void Update(std::shared_ptr<Utility::Camera> camera) override;
     void Update(int lvlnumber)override{}
     void Update(std::shared_ptr<Utility::States>, Utility::Vector2u, float y, std::shared_ptr<Utility::Camera> camera) override{};
+
 };
 
 

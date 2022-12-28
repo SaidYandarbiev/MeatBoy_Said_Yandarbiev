@@ -3,9 +3,9 @@
 //
 
 #include "Camera.h"
-Utility::Camera::Camera(Vector2u windowsize, int lvlnumber) {
+Utility::Camera::Camera(Vector2u windowsize, std::string fixed_or_not) {
     RenderWindow = windowsize;
-    lvlNumber = lvlnumber;
+    f_o_n = fixed_or_not;
 }
 
 void Utility::Camera::UpdatePlayer(Vector2f position1, bool jumping)
@@ -16,11 +16,11 @@ void Utility::Camera::UpdatePlayer(Vector2f position1, bool jumping)
         gameended = true;
     }
 
-    if (position.y > CameraSizeY.y / 2 && jumping && lvlNumber == 2) {
+    if (position.y > CameraSizeY.y / 2 && jumping && f_o_n == "moving") {
         OorsprongPunt.y = OorsprongPunt.y + (position.y - CameraSizeY.y / 2);
      }
 
-    if(lvlNumber == 3){
+    if(f_o_n == "automove"){
         OorsprongPunt.y += 0.02;
     }
 }

@@ -6,10 +6,27 @@
 #define MEATBOY_SAID_YANDARBIEV_MENUSTATE_H
 
 #include "State.h"
+#include "../Utility/tinyxml2.h"
 
 class MenuState : public State{
 public:
-    MenuState(){}
+    MenuState(){
+        int lvl = 1;
+        bool error = false;
+        while(!error){
+            tinyxml2::XMLDocument doc;
+            std::string file = "Levels/Level" + std::to_string(lvl) + ".xml" ;
+            doc.LoadFile(file.c_str());
+            if(doc.Error()){
+               error = true;
+               maxnumber = lvl - 1;
+            }
+
+            else{
+                lvl += 1;
+            }
+        }
+    }
 
     bool Handle1() override{
         std::cout << "Already in MenuState" << std::endl;
@@ -22,7 +39,7 @@ public:
     }
 
     int Handle3() override{
-        if(lvlnumber < 3){
+        if(lvlnumber < maxnumber){
             lvlnumber += 1;
         }
         return lvlnumber;
@@ -44,8 +61,13 @@ public:
         return lvlnumber;
     }
 
+    int maxNumber() override{
+        return maxnumber;
+    }
+
 private:
     int lvlnumber = 1;
+    int maxnumber = 0;
 };
 
 

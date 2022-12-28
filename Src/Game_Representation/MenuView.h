@@ -10,12 +10,21 @@
 class MenuView : public EntityView {
 public:
     MenuView(int lvlnumber){
-        file_ = "Sprites/menul" + std::to_string(lvlnumber) + ".png";
+        currlvl = lvlnumber;
+        file_ = "Sprites/menul" + std::to_string(currlvl) + ".png";
     }
     void notify(Utility::Vector2f vector2F, Direction,bool wall) override{}
     void notify(int lvlnumber)override{
+        currlvl = lvlnumber;
         file_ = "Sprites/menul" + std::to_string(lvlnumber) + ".png";
     }
+
+    int currLvl(){
+        return currlvl;
+    }
+
+private:
+    int currlvl = 1;
 };
 
 

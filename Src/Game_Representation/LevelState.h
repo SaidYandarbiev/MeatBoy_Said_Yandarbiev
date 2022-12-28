@@ -36,6 +36,10 @@ public:
         return false;
     }
 
+    int maxNumber() override{
+        return 0;
+    }
+
 private:
     int lvlnumber_;
     std::shared_ptr<World> world_;

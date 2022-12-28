@@ -19,13 +19,15 @@ Game::Game(string title, sf::Vector2u vector2U)
 
     menuView = make_shared<MenuView>(MenuView(1));
 
+    amount_of_lvl = stateManager_->maxNumber();
+
 }
 
 void Game::Update()
 {
     if(m_world){
         m_world->Update();
-        if(m_world->getGameEnded() && m_world->getLvlNumber() != 3){
+        if(m_world->getGameEnded() && m_world->getLvlNumber() != amount_of_lvl){
             int lvl = m_world->getLvlNumber() + 1;
             concreteFactory = nullptr;
             m_world = nullptr;
@@ -35,7 +37,7 @@ void Game::Update()
             stateManager_->Next(m_world);
         }
 
-        else if(m_world->getGameEnded() && m_world->getLvlNumber() == 3){
+        else if(m_world->getGameEnded() && m_world->getLvlNumber() == amount_of_lvl){
             concreteFactory = nullptr;
             m_world = nullptr;
             stateManager_->Request1();
@@ -55,6 +57,7 @@ void Game::HandleInput(sf::Event event)
             stateManager_->Request1();
             menuView = make_shared<MenuView>(MenuView(1));
         }
+        amount_of_lvl = stateManager_->maxNumber();
     }
 
     else if(event.key.code == sf::Keyboard::Enter){
@@ -79,24 +82,6 @@ void Game::HandleInput(sf::Event event)
         m_world->GetState()->ClickedLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
         m_world->GetState()->ClickedUp = sf::Keyboard::isKeyPressed(sf::Keyboard::W);
     }
-//
-//    //First we update the clickedright and clickedleft with the key presses on our keyboard
-//    m_world->GetState()->ClickedRight = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
-//    m_world->GetState()->ClickedLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-//
-//    //Then we check if our up key has been pressed
-//    bool KeyUpDown = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-//
-//    //If our up key has been pressed and our previouskey was not the upkey (so false) then we can let the player shoot
-//    //And set previousKeyState on true (because our previous pressed key was up)
-//    if(KeyUpDown && !previousKeyState){
-//        m_world->GetState()->Shooting = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-//        previousKeyState = true;
-//    }
-//    //If we dont press the up key then our previousKeyState is false (because the up key was not the key pressed previously)
-//    if(!KeyUpDown){
-//        previousKeyState = false;
-//    }
 
 }
 
@@ -107,10 +92,13 @@ void Game::Render()
         //Enter Menustate
         sf::Sprite sprite = sf::Sprite();
         sf::Texture texture;
-        texture.loadFromFile(menuView->getFile());
-        sprite.setTexture(texture);
+        sf::Text lvl;
+        lvl.setFont(font);
+        lvl.setString(to_string(menuView->currLvl()));
+        lvl.setPosition(300,300);
+
         m_window->BeginDraw();
-        m_window->Draw(sprite);
+        m_window->Draw(lvl);
         m_window->EndDraw();
     }
 
@@ -123,7 +111,12 @@ void Game::Render()
         shared_ptr<Observer> goal = concreteFactory->getGoal();
         m_window->BeginDraw();
 
+        texture.loadFromFile("Sprites/forestbg.png");
+        sprite.setScale(2,2);
+        sprite.setTexture(texture);
+        m_window->Draw(sprite);
 
+        sprite.setScale(1,1);
         if(goal){
             texture.loadFromFile(goal->getFile());
             sprite.setTexture(texture);
@@ -133,9 +126,6 @@ void Game::Render()
         texture.loadFromFile("Sprites/grass.png");
         sprite.setTexture(texture);
         for(int i = 0; i < walls.size(); i++){
-//            if(i == 0){
-//                std::cout << walls[i]->getPosition().x << "  "  << walls[i]->getPosition().y << std::endl;
-//            }
             sprite.setPosition(walls[i]->getPosition().x,walls[i]->getPosition().y);
             m_window->Draw(sprite);
         }

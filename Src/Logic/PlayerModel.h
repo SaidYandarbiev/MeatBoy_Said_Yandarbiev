@@ -9,25 +9,29 @@
 
 
 class PlayerView;
-class PlayerModel :public EntityModel{
+class PlayerModel :public EntityModel {
 
 public:
     PlayerModel(Utility::Vector2f f) {
         pos = f;
+        OriginalPos = f;
     }
 
-    void Update(std::shared_ptr<Utility::Camera> camera)override{};
-    void Update(int lvlnumber)override{}
-    void Update(std::shared_ptr<Utility::States>, Utility::Vector2u, float y, std::shared_ptr<Utility::Camera> camera) override;
+    void Update(std::shared_ptr<Utility::Camera> camera) override {};
 
-    void setFalling(bool fall){
+    void Update(int lvlnumber) override {}
+
+    void Update(std::shared_ptr<Utility::States>, Utility::Vector2u, float y,
+                std::shared_ptr<Utility::Camera> camera) override;
+
+    void setFalling(bool fall) {
         falling = fall;
         ysnelheid = 0;
     }
 
-    void setWall(std::string dir, bool w){
+    void setWall(std::string dir, bool w) {
         walljump = w;
-        if(w) {
+        if (w) {
             if (dir == "left") {
                 direction = Direction::Right;
             }
@@ -39,20 +43,28 @@ public:
         }
     }
 
-    bool getFalling(){
+    bool getFalling() {
         return falling;
     }
 
-    bool getJumping(){
+    bool getJumping() {
         return jumping;
     }
 
-    void setxspeed(float xspeed){
+    void setxspeed(float xspeed) {
         xsnelheid = xspeed;
     }
 
-    Direction getDirection(){
+    Direction getDirection() {
         return direction;
+    }
+
+    bool getDied(){
+        return died;
+    }
+
+    void setDied() {
+        died = false;
     }
 
 private:
@@ -79,7 +91,9 @@ private:
 
     bool walljump = false;
 
-    Utility::Vector2f forces = Utility::Vector2f(0, 9.81);};
+    Utility::Vector2f forces = Utility::Vector2f(0, 9.81);
 
+    bool died = false;
+};
 
 #endif //MEATBOY_SAID_YANDARBIEV_PLAYERMODEL_H

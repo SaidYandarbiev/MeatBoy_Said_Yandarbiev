@@ -1,4 +1,5 @@
 <world>
+    <camera>moving</camera>
     <row1>
         <col1>block</col1>
         <col2>block</col2>

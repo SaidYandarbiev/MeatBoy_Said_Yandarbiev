@@ -30,6 +30,10 @@ public:
     virtual int getLvlNumber(){
         return 0;
     }
+
+    virtual int maxNumber(){
+        return 0;
+    }
 };
 
 

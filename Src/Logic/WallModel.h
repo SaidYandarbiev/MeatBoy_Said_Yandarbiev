@@ -13,6 +13,7 @@ public:
 
     WallModel(Utility::Vector2f f) {
         pos = f;
+        OriginalPos = f;
     }
 
     void Update( std::shared_ptr<Utility::Camera> camera) override;

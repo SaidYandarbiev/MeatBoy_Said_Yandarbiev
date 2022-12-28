@@ -61,6 +61,7 @@ private:
     //Statemanager
     shared_ptr<StateManager> stateManager_;
 
+    int amount_of_lvl = 3;
 
     //Boolean that tells us if the previous key state was the up key button
     bool previousKeyState;

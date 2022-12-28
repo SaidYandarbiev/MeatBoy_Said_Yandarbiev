@@ -9,7 +9,6 @@
 #include "AbstractFactory.h"
 #include "memory"
 #include "../Utility/Camera.h"
-#include "SFML/Graphics.hpp"
 #include "../Utility/States.h"
 #include "iostream"
 #include "string"

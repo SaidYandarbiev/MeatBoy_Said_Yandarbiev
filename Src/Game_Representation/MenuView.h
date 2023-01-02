@@ -33,7 +33,6 @@ public:
      */
     void notify(int lvlnumber)override{
         currlvl = lvlnumber;
-        file_ = "Sprites/menul" + std::to_string(lvlnumber) + ".png";
     }
 
     /**

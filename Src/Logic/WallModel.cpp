@@ -6,10 +6,6 @@
 #include "../Game_Representation/WallView.h"
 
 void WallModel::Update( std::shared_ptr<Utility::Camera> camera) {
-
-    if(camera->GetPosition() > 0){
-        int a = 0;
-    }
     Utility::Vector2f pixels = camera->PositionInPixels(pos);
     for(int i = 0; i < observers.size(); i++){
         observers[i]->notify(pixels, Direction::Left, false);

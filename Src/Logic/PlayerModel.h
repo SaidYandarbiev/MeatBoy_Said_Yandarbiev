@@ -168,12 +168,15 @@ private:
     //Boolean that determines if a player is jumping or not
     bool jumping = false;
 
+    //Boolean that determines if the player has hit a wall or not
     bool hitwall = false;
 
+    //Boolean that determines if the player is walljumping or not
     bool walljump = false;
 
     Utility::Vector2f forces = Utility::Vector2f(0, 9.81);
 
+    //Boolean that determines if a player has died or not
     bool died = false;
 };
 
